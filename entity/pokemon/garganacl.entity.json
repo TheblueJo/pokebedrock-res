@@ -10,7 +10,9 @@
 			"textures": {
 				"evo_aura": "textures/entity/evolving",
 				"default": "textures/entity/pokemon/garganacl/garganacl.png",
-				"shiny_default": "textures/entity/pokemon/garganacl/shiny_garganacl.png"
+				"shiny_default": "textures/entity/pokemon/garganacl/shiny_garganacl.png",
+				"pbranni": "textures/entity/pokemon/garganacl/garganacl_pbranni.png",
+				"shiny_pbranni": "textures/entity/pokemon/garganacl/shiny_garganacl_pbranni.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -22,7 +24,7 @@
 					"v.skin_index = query.property('pokeb:skin_index');",
 					"v.is_ground_idling = query.is_on_ground && query.modified_move_speed < v.move_threshold;",
 					"v.is_air_idling = !query.is_on_ground && !query.is_in_water && !query.is_jumping && query.modified_move_speed < v.move_threshold;",
-					"v.is_water_idling = query.is_in_water && query.modified_move_speed < v.move_threshold;",
+					"v.is_water_idling = query.is_in_water && !query.is_swimming;",
 					"v.is_walking = query.modified_move_speed >= v.move_threshold && query.is_on_ground && !query.is_in_water;",
 					"v.is_swimming = query.is_swimming;",
 					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
@@ -37,6 +39,7 @@
 				]
 			},
 			"animations": {
+				"default_blink": "animation.garganacl.blink",
 				"default_ground_idle": "animation.garganacl.ground_idle",
 				"default_air_idle": "animation.garganacl.ground_idle",
 				"default_water_idle": "animation.garganacl.water_idle",
@@ -44,17 +47,28 @@
 				"default_flying": "animation.garganacl.ground_idle",
 				"default_swimming": "animation.garganacl.swimming",
 				"default_sleeping": "animation.garganacl.sleeping",
+				"default_attack": "animation.garganacl.attack",
+				"pbranni_flying": "animation.garganacl_pbranni.flying",
+				"pbranni_air_idle": "animation.garganacl_pbranni.air_idle",
+				"pbranni_swimming": "animation.garganacl_pbranni.swimming",
+				"pbranni_water_idle": "animation.garganacl_pbranni.water_idle",
+				"pbranni_walking": "animation.garganacl_pbranni.walking",
+				"pbranni_ground_idle": "animation.garganacl_pbranni.ground_idle",
+				"pbranni_sleeping": "animation.garganacl_pbranni.sleeping",
+				"pbranni_blink": "animation.garganacl_pbranni.blink",
+				"pbranni_attack": "animation.garganacl_pbranni.attack",
+				"pbranni_faint": "animation.garganacl_pbranni.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
-				"attack": "animation.garganacl.attack",
-				"blink": "animation.garganacl.blink",
-				"controller": "controller.animation.pokemon"
+				"attack": "controller.animation.pokemon.garganacl_attack",
+				"blink": "controller.animation.pokemon.garganacl_blink",
+				"controller": "controller.animation.pokemon.garganacl"
 			},
 			"render_controllers": [
 				{
-					"controller.render.pokemon": "query.variant==0"
+					"controller.render.pokemon:garganacl": "query.variant==0"
 				},
 				{
-					"controller.render.evolve": "query.variant==1"
+					"controller.render.pokemon:garganacl.evolve": "query.variant==1"
 				}
 			],
 			"spawn_egg": {
@@ -62,7 +76,8 @@
 				"texture_index": 0
 			},
 			"geometry": {
-				"default": "geometry.garganacl"
+				"default": "geometry.garganacl",
+				"pbranni": "geometry.garganacl_pbranni"
 			}
 		}
 	}

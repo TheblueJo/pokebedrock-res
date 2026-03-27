@@ -12,7 +12,9 @@
 				"default": "textures/entity/pokemon/mewtwo/mewtwo.png",
 				"shiny_default": "textures/entity/pokemon/mewtwo/shiny_mewtwo.png",
 				"shadow": "textures/entity/pokemon/mewtwo/mewtwo_shadow.png",
-				"armored": "textures/entity/pokemon/mewtwo/mewtwo_armored.png"
+				"armored": "textures/entity/pokemon/mewtwo/mewtwo_armored.png",
+				"bnw": "textures/entity/pokemon/mewtwo/mewtwo_bnw.png",
+				"shiny_bnw": "textures/entity/pokemon/mewtwo/shiny_mewtwo_bnw.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -24,7 +26,7 @@
 					"v.skin_index = query.property('pokeb:skin_index');",
 					"v.is_ground_idling = query.is_on_ground && query.modified_move_speed < v.move_threshold;",
 					"v.is_air_idling = !query.is_on_ground && !query.is_in_water && !query.is_jumping && query.modified_move_speed < v.move_threshold;",
-					"v.is_water_idling = query.is_in_water && query.modified_move_speed < v.move_threshold;",
+					"v.is_water_idling = query.is_in_water && !query.is_swimming;",
 					"v.is_walking = query.modified_move_speed >= v.move_threshold && query.is_on_ground && !query.is_in_water;",
 					"v.is_swimming = query.is_swimming;",
 					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",

@@ -10,7 +10,9 @@
 			"textures": {
 				"evo_aura": "textures/entity/evolving",
 				"default": "textures/entity/pokemon/ironvaliant/ironvaliant.png",
-				"shiny_default": "textures/entity/pokemon/ironvaliant/shiny_ironvaliant.png"
+				"shiny_default": "textures/entity/pokemon/ironvaliant/shiny_ironvaliant.png",
+				"ichigo": "textures/entity/pokemon/ironvaliant/ironvaliant_ichigo.png",
+				"shiny_ichigo": "textures/entity/pokemon/ironvaliant/shiny_ironvaliant_ichigo.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -22,7 +24,7 @@
 					"v.skin_index = query.property('pokeb:skin_index');",
 					"v.is_ground_idling = query.is_on_ground && query.modified_move_speed < v.move_threshold;",
 					"v.is_air_idling = !query.is_on_ground && !query.is_in_water && !query.is_jumping && query.modified_move_speed < v.move_threshold;",
-					"v.is_water_idling = query.is_in_water && query.modified_move_speed < v.move_threshold;",
+					"v.is_water_idling = query.is_in_water && !query.is_swimming;",
 					"v.is_walking = query.modified_move_speed >= v.move_threshold && query.is_on_ground && !query.is_in_water;",
 					"v.is_swimming = query.is_swimming;",
 					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
@@ -37,6 +39,7 @@
 				]
 			},
 			"animations": {
+				"default_blink": "animation.ironvaliant.blink",
 				"default_ground_idle": "animation.ironvaliant.ground_idle",
 				"default_air_idle": "animation.ironvaliant.ground_idle",
 				"default_water_idle": "animation.ironvaliant.water_idle",
@@ -44,17 +47,28 @@
 				"default_flying": "animation.ironvaliant.ground_idle",
 				"default_swimming": "animation.ironvaliant.swimming",
 				"default_sleeping": "animation.ironvaliant.sleeping",
+				"default_attack": "animation.ironvaliant.attack",
+				"ichigo_flying": "animation.ironvaliant_ichigo.flying",
+				"ichigo_air_idle": "animation.ironvaliant_ichigo.air_idle",
+				"ichigo_swimming": "animation.ironvaliant_ichigo.swimming",
+				"ichigo_water_idle": "animation.ironvaliant_ichigo.water_idle",
+				"ichigo_walking": "animation.ironvaliant_ichigo.walking",
+				"ichigo_ground_idle": "animation.ironvaliant_ichigo.ground_idle",
+				"ichigo_sleeping": "animation.ironvaliant_ichigo.sleeping",
+				"ichigo_blink": "animation.ironvaliant_ichigo.blink",
+				"ichigo_attack": "animation.ironvaliant_ichigo.attack",
+				"ichigo_faint": "animation.ironvaliant_ichigo.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
-				"attack": "animation.ironvaliant.attack",
-				"blink": "animation.ironvaliant.blink",
-				"controller": "controller.animation.pokemon"
+				"attack": "controller.animation.pokemon.ironvaliant_attack",
+				"blink": "controller.animation.pokemon.ironvaliant_blink",
+				"controller": "controller.animation.pokemon.ironvaliant"
 			},
 			"render_controllers": [
 				{
-					"controller.render.pokemon": "query.variant==0"
+					"controller.render.pokemon:ironvaliant": "query.variant==0"
 				},
 				{
-					"controller.render.evolve": "query.variant==1"
+					"controller.render.pokemon:ironvaliant.evolve": "query.variant==1"
 				}
 			],
 			"spawn_egg": {
@@ -62,7 +76,8 @@
 				"texture_index": 0
 			},
 			"geometry": {
-				"default": "geometry.ironvaliant"
+				"default": "geometry.ironvaliant",
+				"ichigo": "geometry.ironvaliant_ichigo"
 			}
 		}
 	}

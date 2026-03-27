@@ -36,7 +36,7 @@
               "default_ground_idle": "v.skin_index == 0"
             },
             {
-              "christmas_ground_idle": "v.skin_index == 1"
+              "pbranni_ground_idle": "v.skin_index == 1"
             }
           ],
           "transitions": [
@@ -49,7 +49,10 @@
         "air_idle": {
           "animations": [
             {
-              "default_air_idle": "v.skin_index == 0 || v.skin_index == 1"
+              "default_air_idle": "v.skin_index == 0"
+            },
+            {
+              "pbranni_air_idle": "v.skin_index == 1"
             }
           ],
           "transitions": [
@@ -65,7 +68,7 @@
               "default_water_idle": "v.skin_index == 0"
             },
             {
-              "christmas_water_idle": "v.skin_index == 1"
+              "pbranni_water_idle": "v.skin_index == 1"
             }
           ],
           "transitions": [
@@ -81,7 +84,7 @@
               "default_walking": "v.skin_index == 0"
             },
             {
-              "christmas_walking": "v.skin_index == 1"
+              "pbranni_walking": "v.skin_index == 1"
             }
           ],
           "transitions": [
@@ -94,7 +97,10 @@
         "flying": {
           "animations": [
             {
-              "default_flying": "v.skin_index == 0 || v.skin_index == 1"
+              "default_flying": "v.skin_index == 0"
+            },
+            {
+              "pbranni_flying": "v.skin_index == 1"
             }
           ],
           "transitions": [
@@ -110,7 +116,7 @@
               "default_swimming": "v.skin_index == 0"
             },
             {
-              "christmas_swimming": "v.skin_index == 1"
+              "pbranni_swimming": "v.skin_index == 1"
             }
           ],
           "transitions": [
@@ -126,7 +132,7 @@
               "default_sleeping": "v.skin_index == 0"
             },
             {
-              "christmas_sleeping": "v.skin_index == 1"
+              "pbranni_sleeping": "v.skin_index == 1"
             }
           ],
           "transitions": [
@@ -144,7 +150,7 @@
         "default": {
           "animations": [
             {
-              "default_blink": "v.skin_index == 0"
+              "default_blink": "v.skin_index == 0 || v.skin_index == 1"
             }
           ]
         }
@@ -159,7 +165,7 @@
               "default_attack": "v.skin_index == 0"
             },
             {
-              "christmas_attack": "v.skin_index == 1"
+              "pbranni_attack": "v.skin_index == 1"
             }
           ]
         }

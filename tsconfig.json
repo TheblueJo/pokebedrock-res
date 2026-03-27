@@ -2,12 +2,27 @@
   "compilerOptions": {
     "target": "ES6",
     "module": "commonjs",
-    "rootDir": "./scripts",
     "strict": true,
+    "noEmit": true,
     "esModuleInterop": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "alwaysStrict": true,
+    "exactOptionalPropertyTypes": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": false,
+    "noImplicitOverride": false,
+    "noImplicitReturns": false,
+    "noImplicitThis": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "sourceMap": false,
+    "skipLibCheck": true,
+    "types": ["node", "jest"]
   },
-  "include": ["scripts/**/*"],
-  "exclude": ["node_modules"],
-  "typeRoots": ["./scripts/types.ts", "./node_modules/@types"]
+  "include": ["scripts/**/*", "jest.config.ts"],
+  "exclude": ["node_modules", "scripts/tests"]
 }

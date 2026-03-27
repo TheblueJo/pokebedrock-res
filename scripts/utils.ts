@@ -1,8 +1,7 @@
-import * as fs from "fs";
-import * as path from "path";
+import fs from "fs";
+import path from "path";
 import fsExtra from "fs-extra";
 import { PokemonSkinOption } from "./data/customizations";
-import { isEqual } from "lodash";
 
 export class Logger {
   private static readonly COLORS: Record<LogType, string> = {
@@ -143,14 +142,15 @@ export function removeCommentsFromLang(langData: string): string {
   const cleanedLines = lines
     .map((line) => {
       // Remove any in-line comments that have two or more # (e.g., ##, ###, etc.)
-      const noInlineComments = line.split(/#{2,}/)[0].trim();
+      const [firstSegment] = line.split(/#{2,}/);
+      const noInlineComments = (firstSegment ?? "").trim();
 
       // Return the line only if it's not empty and not a full-line comment (starting with ## or more #)
       return noInlineComments.length > 0 && !noInlineComments.match(/^#{2,}/)
         ? noInlineComments
         : null;
     })
-    .filter(Boolean); // Remove null values
+    .filter((v): v is string => typeof v === "string" && v.length > 0); // Remove null values
 
   // Join the cleaned lines with CRLF (\r\n) to maintain Windows-style line breaks
   return cleanedLines.join("\r\n");
@@ -161,10 +161,10 @@ export function removeCommentsFromLang(langData: string): string {
  */
 export function countFilesRecursively(directory: string): number {
   let count = 0;
-  const items = fs.readdirSync(directory);
+  const items = fsExtra.readdirSync(directory);
   for (const item of items) {
     const fullPath = path.join(directory, item);
-    if (fs.lstatSync(fullPath).isDirectory()) {
+    if (fsExtra.lstatSync(fullPath).isDirectory()) {
       count += countFilesRecursively(fullPath);
     } else {
       count += 1;
@@ -186,9 +186,9 @@ export function editLangSection(
   header: string,
   content: string
 ) {
-  if (!fs.existsSync(filePath))
-    fs.writeFileSync(filePath, `##${header}\n\n${content}`);
-  const fileContent = fs.readFileSync(filePath, "utf-8");
+  if (!fsExtra.existsSync(filePath))
+    fsExtra.writeFileSync(filePath, `##${header}\n\n${content}`);
+  const fileContent = fsExtra.readFileSync(filePath, "utf-8");
   const lines = fileContent.split(/\r?\n/);
 
   // Find the start of the section
@@ -216,7 +216,7 @@ export function editLangSection(
     );
   }
 
-  fs.writeFileSync(filePath, lines.join("\r\n"));
+  fsExtra.writeFileSync(filePath, lines.join("\r\n"));
 }
 
 /**
@@ -282,9 +282,9 @@ export function skinOptionIncludes(
  */
 export function writeFileIfChanged(filePath: string, data: string): boolean {
   // Check if file exists and read current content
-  if (fs.existsSync(filePath)) {
+  if (fsExtra.existsSync(filePath)) {
     try {
-      const currentContent = fs.readFileSync(filePath, "utf8");
+      const currentContent = fsExtra.readFileSync(filePath, "utf8");
       if (currentContent === data) {
         return false; // No change needed
       }
@@ -294,7 +294,7 @@ export function writeFileIfChanged(filePath: string, data: string): boolean {
   }
 
   // Write the file since content has changed or file doesn't exist
-  fs.writeFileSync(filePath, data, "utf8");
+  fsExtra.writeFileSync(filePath, data, "utf8");
   return true; // File was written
 }
 
@@ -306,9 +306,9 @@ export async function writeImageIfChanged(
   imageBuffer: Buffer
 ): Promise<boolean> {
   // Check if file exists and compare content
-  if (fs.existsSync(filePath)) {
+  if (fsExtra.existsSync(filePath)) {
     try {
-      const currentBuffer = fs.readFileSync(filePath);
+      const currentBuffer = fsExtra.readFileSync(filePath);
       if (currentBuffer.equals(imageBuffer)) {
         return false; // No change needed
       }
@@ -318,6 +318,95 @@ export async function writeImageIfChanged(
   }
 
   // Write the file since content has changed or file doesn't exist
-  fs.writeFileSync(filePath, imageBuffer);
+  fsExtra.writeFileSync(filePath, imageBuffer);
   return true; // File was written
+}
+
+/**
+ * Recursively collects all file paths under a directory whose extension is in the given list.
+ *
+ * @param dir - Root directory to scan.
+ * @param extensions - Allowed extensions (lowercase, without leading dot), e.g. `["json", "material"]`.
+ * @returns Array of absolute file paths with matching extensions.
+ */
+export function collectFiles(dir: string, extensions: string[]): string[] {
+  const results: string[] = [];
+  if (!fs.existsSync(dir)) return results;
+
+  const walk = (current: string) => {
+    for (const entry of fs.readdirSync(current)) {
+      const full = path.join(current, entry);
+      if (fs.lstatSync(full).isDirectory()) {
+        walk(full);
+        continue;
+      }
+      const ext = entry.split(".").pop()?.toLowerCase();
+      if (ext && extensions.includes(ext)) results.push(full);
+    }
+  };
+  walk(dir);
+  return results;
+}
+
+/**
+ * Reads a file as UTF-8, strips JSON comments, parses as JSON, and returns the result.
+ * On parse or read error, logs the error and returns `null`.
+ *
+ * @param filePath - Path to the JSON file.
+ * @returns Parsed value or `null` on error.
+ */
+export function readJsonFileStrippingComments(filePath: string): unknown | null {
+  try {
+    const raw = fs.readFileSync(filePath, "utf-8");
+    const cleaned = removeCommentsFromJSON(raw);
+    return JSON.parse(cleaned);
+  } catch (err) {
+    Logger.error(`Failed to parse ${filePath}: ${err}`);
+    return null;
+  }
+}
+
+/**
+ * Normalizes a file path to use forward slashes (for archive-relative paths).
+ *
+ * @param filePath - Path that may use backslashes (e.g. on Windows).
+ * @returns The same path with backslashes replaced by forward slashes.
+ */
+export function toRelativePath(filePath: string): string {
+  return filePath.replace(/\\/g, "/");
+}
+
+/**
+ * Compares two semver-like strings (e.g. `"1.8.0"`, `"1.12.0"`) and returns the higher one.
+ *
+ * @param a - First version string.
+ * @param b - Second version string.
+ * @returns The version string that is greater, or `a` if equal.
+ */
+export function maxVersion(a: string, b: string): string {
+  const pa = a.split(".").map(Number);
+  const pb = b.split(".").map(Number);
+  for (let i = 0; i < Math.max(pa.length, pb.length); i++) {
+    const va = pa[i] ?? 0;
+    const vb = pb[i] ?? 0;
+    if (va > vb) return a;
+    if (vb > va) return b;
+  }
+  return a;
+}
+
+/**
+ * Returns a copy of an object with its keys sorted alphabetically.
+ *
+ * @param obj - Object with string keys.
+ * @returns New object with same entries and sorted keys.
+ */
+export function sortObjectKeys(
+  obj: Record<string, unknown>
+): Record<string, unknown> {
+  const sorted: Record<string, unknown> = {};
+  for (const key of Object.keys(obj).sort()) {
+    sorted[key] = obj[key];
+  }
+  return sorted;
 }

@@ -4,25 +4,68 @@
 		"description": {
 			"identifier": "pokemon:kricketune",
 			"materials": {
-				"default": "zombie"
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
 			},
 			"textures": {
-				"default": "textures/sprites/default/kricketune",
-				"shiny_default": "textures/sprites/default/kricketune",
-				"default_male": "textures/sprites/default/kricketune",
-				"default_female": "textures/sprites/default/kricketune",
-				"shiny_male": "textures/sprites/default/kricketune",
-				"shiny_female": "textures/sprites/default/kricketune"
+				"evo_aura": "textures/entity/evolving",
+				"male_default": "textures/entity/pokemon/kricketune/male_kricketune.png",
+				"shiny_male_default": "textures/entity/pokemon/kricketune/male_shiny_kricketune.png",
+				"female_default": "textures/entity/pokemon/kricketune/female_kricketune.png",
+				"shiny_female_default": "textures/entity/pokemon/kricketune/female_shiny_kricketune.png"
 			},
-			"geometry": {
-				"default": "geometry.substitute"
+			"scripts": {
+				"scale": "q.property('pokeb:scale')",
+				"initialize": [
+					"v.blink_chance = 0.01;",
+					"v.move_threshold = 0.01;"
+				],
+				"pre_animation": [
+					"v.skin_index = query.property('pokeb:skin_index');",
+					"v.is_ground_idling = query.is_on_ground && query.modified_move_speed < v.move_threshold;",
+					"v.is_air_idling = !query.is_on_ground && !query.is_in_water && !query.is_jumping && query.modified_move_speed < v.move_threshold;",
+					"v.is_water_idling = query.is_in_water && !query.is_swimming;",
+					"v.is_walking = query.modified_move_speed >= v.move_threshold && query.is_on_ground && !query.is_in_water;",
+					"v.is_swimming = query.is_swimming;",
+					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
+					"v.is_sleeping = q.is_sleeping;",
+					"v.should_blink = math.random(0.0, 1.0) <= v.blink_chance;"
+				],
+				"animate": [
+					"controller",
+					{
+						"blink": "v.should_blink"
+					}
+				]
+			},
+			"animations": {
+				"default_ground_idle": "animation.kricketune.ground_idle",
+				"default_air_idle": "animation.kricketune.air_idle",
+				"default_water_idle": "animation.kricketune.water_idle",
+				"default_walking": "animation.kricketune.walking",
+				"default_flying": "animation.kricketune.flying",
+				"default_swimming": "animation.kricketune.swimming",
+				"default_sleeping": "animation.kricketune.sleeping",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"attack": "animation.kricketune.attack",
+				"blink": "animation.kricketune.blink",
+				"controller": "controller.animation.pokemon"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				{
+					"controller.render.pokemon:kricketune": "query.variant==0"
+				},
+				{
+					"controller.render.pokemon:kricketune.evolve": "query.variant==1"
+				}
 			],
 			"spawn_egg": {
 				"texture": "kricketune",
 				"texture_index": 0
+			},
+			"geometry": {
+				"male_default": "geometry.male_kricketune",
+				"female_default": "geometry.female_kricketune"
 			}
 		}
 	}

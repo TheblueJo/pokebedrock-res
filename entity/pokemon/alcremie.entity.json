@@ -4,25 +4,73 @@
 		"description": {
 			"identifier": "pokemon:alcremie",
 			"materials": {
-				"default": "zombie"
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
 			},
 			"textures": {
-				"default": "textures/sprites/default/alcremie",
-				"shiny_default": "textures/sprites/default/alcremie",
-				"default_male": "textures/sprites/default/alcremie",
-				"default_female": "textures/sprites/default/alcremie",
-				"shiny_male": "textures/sprites/default/alcremie",
-				"shiny_female": "textures/sprites/default/alcremie"
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/alcremie/alcremie.png",
+				"shiny_default": "textures/entity/pokemon/alcremie/shiny_alcremie.png",
+				"ruby_cream": "textures/entity/pokemon/alcremie/alcremie_ruby_cream.png",
+				"matcha_cream": "textures/entity/pokemon/alcremie/alcremie_matcha_cream.png",
+				"mint_cream": "textures/entity/pokemon/alcremie/alcremie_mint_cream.png",
+				"lemon_cream": "textures/entity/pokemon/alcremie/alcremie_lemon_cream.png",
+				"salted_cream": "textures/entity/pokemon/alcremie/alcremie_salted_cream.png",
+				"ruby_swirl": "textures/entity/pokemon/alcremie/alcremie_ruby_swirl.png",
+				"caramel_swirl": "textures/entity/pokemon/alcremie/alcremie_caramel_swirl.png",
+				"rainbow_swirl": "textures/entity/pokemon/alcremie/alcremie_rainbow_swirl.png"
 			},
-			"geometry": {
-				"default": "geometry.substitute"
+			"scripts": {
+				"scale": "q.property('pokeb:scale')",
+				"initialize": [
+					"v.blink_chance = 0.01;",
+					"v.move_threshold = 0.01;"
+				],
+				"pre_animation": [
+					"v.skin_index = query.property('pokeb:skin_index');",
+					"v.is_ground_idling = query.is_on_ground && query.modified_move_speed < v.move_threshold;",
+					"v.is_air_idling = !query.is_on_ground && !query.is_in_water && !query.is_jumping && query.modified_move_speed < v.move_threshold;",
+					"v.is_water_idling = query.is_in_water && !query.is_swimming;",
+					"v.is_walking = query.modified_move_speed >= v.move_threshold && query.is_on_ground && !query.is_in_water;",
+					"v.is_swimming = query.is_swimming;",
+					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
+					"v.is_sleeping = q.is_sleeping;",
+					"v.should_blink = math.random(0.0, 1.0) <= v.blink_chance;"
+				],
+				"animate": [
+					"controller",
+					{
+						"blink": "v.should_blink"
+					}
+				]
+			},
+			"animations": {
+				"default_ground_idle": "animation.alcremie.ground_idle",
+				"default_air_idle": "animation.alcremie.ground_idle",
+				"default_water_idle": "animation.alcremie.water_idle",
+				"default_walking": "animation.alcremie.walking",
+				"default_flying": "animation.alcremie.ground_idle",
+				"default_swimming": "animation.alcremie.swimming",
+				"default_sleeping": "animation.alcremie.sleeping",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"attack": "animation.alcremie.attack",
+				"blink": "animation.alcremie.blink",
+				"controller": "controller.animation.pokemon"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				{
+					"controller.render.pokemon:alcremie": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
 			],
 			"spawn_egg": {
 				"texture": "alcremie",
 				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.alcremie"
 			}
 		}
 	}

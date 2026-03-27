@@ -2,6 +2,63 @@
   "resource_pack_name": "vanilla",
   "texture_name": "atlas.items",
   "texture_data": {
+    "box_of_chocolate": {
+      "textures": "textures/items/box_of_chocolate"
+    },
+    "booster_egg_steps_default": {
+      "textures": "textures/items/boosters/egg_steps_default"
+    },
+    "booster_egg_steps_long": {
+      "textures": "textures/items/boosters/egg_steps_long"
+    },
+    "booster_egg_steps_short": {
+      "textures": "textures/items/boosters/egg_steps_short"
+    },
+    "booster_evs_default": {
+      "textures": "textures/items/boosters/evs_default"
+    },
+    "booster_evs_long": {
+      "textures": "textures/items/boosters/evs_long"
+    },
+    "booster_evs_short": {
+      "textures": "textures/items/boosters/evs_short"
+    },
+    "booster_ha_spawn_default": {
+      "textures": "textures/items/boosters/ha_spawn_default"
+    },
+    "booster_ha_spawn_long": {
+      "textures": "textures/items/boosters/ha_spawn_long"
+    },
+    "booster_ha_spawn_short": {
+      "textures": "textures/items/boosters/ha_spawn_short"
+    },
+    "booster_ivs_default": {
+      "textures": "textures/items/boosters/ivs_default"
+    },
+    "booster_ivs_long": {
+      "textures": "textures/items/boosters/ivs_long"
+    },
+    "booster_ivs_short": {
+      "textures": "textures/items/boosters/ivs_short"
+    },
+    "booster_shiny_default": {
+      "textures": "textures/items/boosters/shiny_default"
+    },
+    "booster_shiny_long": {
+      "textures": "textures/items/boosters/shiny_long"
+    },
+    "booster_shiny_short": {
+      "textures": "textures/items/boosters/shiny_short"
+    },
+    "booster_xp_default": {
+      "textures": "textures/items/boosters/xp_default"
+    },
+    "booster_xp_long": {
+      "textures": "textures/items/boosters/xp_long"
+    },
+    "booster_xp_short": {
+      "textures": "textures/items/boosters/xp_short"
+    },
     "armor_fossil": {
       "textures": "textures/items/fossils/armor"
     },
@@ -117,69 +174,43 @@
       "textures": "textures/items/battery"
     },
     "calcium": {
-      "textures": [
-        "textures/items/healing_items/calcium.png"
-      ]
+      "textures": ["textures/items/healing_items/calcium.png"]
     },
     "zinc": {
-      "textures": [
-        "textures/items/healing_items/zinc.png"
-      ]
+      "textures": ["textures/items/healing_items/zinc.png"]
     },
     "carbos": {
-      "textures": [
-        "textures/items/healing_items/carbos.png"
-      ]
+      "textures": ["textures/items/healing_items/carbos.png"]
     },
     "iron": {
-      "textures": [
-        "textures/items/healing_items/iron.png"
-      ]
+      "textures": ["textures/items/healing_items/iron.png"]
     },
     "protein": {
-      "textures": [
-        "textures/items/healing_items/protein.png"
-      ]
+      "textures": ["textures/items/healing_items/protein.png"]
     },
     "hp_up": {
-      "textures": [
-        "textures/items/healing_items/hp_up.png"
-      ]
+      "textures": ["textures/items/healing_items/hp_up.png"]
     },
     "pp_up": {
-      "textures": [
-        "textures/items/healing_items/pp_up.png"
-      ]
+      "textures": ["textures/items/healing_items/pp_up.png"]
     },
     "pp_max": {
-      "textures": [
-        "textures/items/healing_items/pp_max.png"
-      ]
+      "textures": ["textures/items/healing_items/pp_max.png"]
     },
     "energy_powder": {
-      "textures": [
-        "textures/items/healing_items/energy_powder.png"
-      ]
+      "textures": ["textures/items/healing_items/energy_powder.png"]
     },
     "heal_powder": {
-      "textures": [
-        "textures/items/healing_items/heal_powder.png"
-      ]
+      "textures": ["textures/items/healing_items/heal_powder.png"]
     },
     "energy_root": {
-      "textures": [
-        "textures/items/healing_items/energy_root.png"
-      ]
+      "textures": ["textures/items/healing_items/energy_root.png"]
     },
     "revival_herb": {
-      "textures": [
-        "textures/items/healing_items/revival_herb.png"
-      ]
+      "textures": ["textures/items/healing_items/revival_herb.png"]
     },
     "backpack": {
-      "textures": [
-        "textures/items/backpack.png"
-      ]
+      "textures": ["textures/items/backpack.png"]
     },
     "orb_of_frozen_souls": {
       "textures": [
@@ -348,6 +379,15 @@
     },
     "santa_spawn_egg": {
       "textures": "textures/items/santa_spawn_egg"
+    },
+    "anabel_spawn_egg": {
+      "textures": "textures/items/anabel_spawn_egg"
+    },
+    "colress_spawn_egg": {
+      "textures": "textures/items/colress_npc_egg"
+    },
+    "cynthia_spawn_egg": {
+      "textures": "textures/items/cynthia_npc_egg"
     },
     "valentine_npc_spawn_egg": {
       "textures": "textures/items/valentine_npc_spawn_egg"
@@ -525,6 +565,9 @@
     },
     "yellow_apricorn_sapling": {
       "textures": "textures/items/apricorns/saplings/yellow"
+    },
+    "spoiled_apricorn": {
+      "textures": "textures/items/apricorns/spoiled"
     },
     "blue_apricorn": {
       "textures": "textures/items/apricorns/blueapricorn"
@@ -2325,6 +2368,9 @@
     },
     "ninetalesalola": {
       "textures": "textures/sprites/default/ninetalesalola.png"
+    },
+    "ninetalesalola_christmas": {
+      "textures": "textures/sprites/default/ninetalesalola_christmas.png"
     },
     "jigglypuff": {
       "textures": "textures/sprites/default/jigglypuff.png"
@@ -6644,7 +6690,7 @@
       "textures": "textures/sprites/default/darkrai_halloween.png"
     },
     "victini_valentine": {
-      "textures": "textures/sprites/default/victini.png"
+      "textures": "textures/sprites/default/victini_valentine.png"
     },
     "trubbish_halloween": {
       "textures": "textures/sprites/default/trubbish_halloween.png"
@@ -6868,14 +6914,17 @@
     "snorlax_santa": {
       "textures": "textures/sprites/default/snorlax_santa.png"
     },
-    "spinda_bowties": {
-      "textures": "textures/sprites/default/spinda_bowties.png"
+    "spinda_bow_ties": {
+      "textures": "textures/sprites/default/spinda_bow_ties.png"
     },
-    "spinda_facescar": {
-      "textures": "textures/sprites/default/spinda_facescar.png"
+    "spinda_doublegangar": {
+      "textures": "textures/sprites/default/spinda_doublegangar.png"
     },
-    "spinda_doubleganger": {
-      "textures": "textures/sprites/default/spinda_doubleganger.png"
+    "spinda_face_scar": {
+      "textures": "textures/sprites/default/spinda_face_scar.png"
+    },
+    "spinda_small_king": {
+      "textures": "textures/sprites/default/spinda_small_king.png"
     },
     "spinda_dots": {
       "textures": "textures/sprites/default/spinda_dots.png"
@@ -6885,9 +6934,6 @@
     },
     "spinda_eyebrows": {
       "textures": "textures/sprites/default/spinda_eyebrows.png"
-    },
-    "spinda_smallking": {
-      "textures": "textures/sprites/default/spinda_smallking.png"
     },
     "spinda_heart": {
       "textures": "textures/sprites/default/spinda_heart.png"
@@ -6951,6 +6997,294 @@
     },
     "flygon_fly": {
       "textures": "textures/sprites/default/flygon_fly.png"
+    },
+    "ditto_slimeking": {
+      "textures": "textures/sprites/default/ditto_slimeking.png"
+    },
+    "excadrill_miner": {
+      "textures": "textures/sprites/default/excadrill_miner.png"
+    },
+    "genesect_beru": {
+      "textures": "textures/sprites/default/genesect_beru.png"
+    },
+    "genesectdouse_beru": {
+      "textures": "textures/sprites/default/genesectdouse_beru.png"
+    },
+    "genesectshock_beru": {
+      "textures": "textures/sprites/default/genesectshock_beru.png"
+    },
+    "genesectburn_beru": {
+      "textures": "textures/sprites/default/genesectburn_beru.png"
+    },
+    "genesectchill_beru": {
+      "textures": "textures/sprites/default/genesectchill_beru.png"
+    },
+    "lugia_shadow": {
+      "textures": "textures/sprites/default/lugia_shadow.png"
+    },
+    "mamoswine_appa": {
+      "textures": "textures/sprites/default/mamoswine_appa.png"
+    },
+    "caterpie_king": {
+      "textures": "textures/sprites/default/caterpie_king.png"
+    },
+    "golurk_fullmetal": {
+      "textures": "textures/sprites/default/golurk_fullmetal.png"
+    },
+    "scizor_ranger": {
+      "textures": "textures/sprites/default/scizor_ranger.png"
+    },
+    "meloetta_diva": {
+      "textures": "textures/sprites/default/meloetta_diva.png"
+    },
+    "meloettapirouette_diva": {
+      "textures": "textures/sprites/default/meloettapirouette_diva.png"
+    },
+    "genesect_teamplasma": {
+      "textures": "textures/sprites/default/genesect_teamplasma.png"
+    },
+    "genesectdouse_teamplasma": {
+      "textures": "textures/sprites/default/genesectdouse_teamplasma.png"
+    },
+    "genesectshock_teamplasma": {
+      "textures": "textures/sprites/default/genesectshock_teamplasma.png"
+    },
+    "genesectburn_teamplasma": {
+      "textures": "textures/sprites/default/genesectburn_teamplasma.png"
+    },
+    "genesectchill_teamplasma": {
+      "textures": "textures/sprites/default/genesectchill_teamplasma.png"
+    },
+    "ditto_venom": {
+      "textures": "textures/sprites/default/ditto_venom.png"
+    },
+    "shuckle_tophat": {
+      "textures": "textures/sprites/default/shuckle_tophat.png"
+    },
+    "lechonk_halloween": {
+      "textures": "textures/sprites/default/lechonk_halloween.png"
+    },
+    "oinkologne_halloween": {
+      "textures": "textures/sprites/default/oinkologne_halloween.png"
+    },
+    "oinkolognef_halloween": {
+      "textures": "textures/sprites/default/oinkolognef_halloween.png"
+    },
+    "aloraichium_z": {
+      "textures": "textures/items/held_items/z/aloraichium_z"
+    },
+    "buginium_z": {
+      "textures": "textures/items/held_items/z/buginium_z"
+    },
+    "darkinium_z": {
+      "textures": "textures/items/held_items/z/darkinium_z"
+    },
+    "decidium_z": {
+      "textures": "textures/items/held_items/z/decidium_z"
+    },
+    "dragonium_z": {
+      "textures": "textures/items/held_items/z/dragonium_z"
+    },
+    "eevium_z": {
+      "textures": "textures/items/held_items/z/eevium_z"
+    },
+    "electrium_z": {
+      "textures": "textures/items/held_items/z/electrium_z"
+    },
+    "fairium_z": {
+      "textures": "textures/items/held_items/z/fairium_z"
+    },
+    "fightinium_z": {
+      "textures": "textures/items/held_items/z/fightinium_z"
+    },
+    "firium_z": {
+      "textures": "textures/items/held_items/z/firium_z"
+    },
+    "flyinium_z": {
+      "textures": "textures/items/held_items/z/flyinium_z"
+    },
+    "ghostium_z": {
+      "textures": "textures/items/held_items/z/ghostium_z"
+    },
+    "grassium_z": {
+      "textures": "textures/items/held_items/z/grassium_z"
+    },
+    "groundium_z": {
+      "textures": "textures/items/held_items/z/groundium_z"
+    },
+    "icium_z": {
+      "textures": "textures/items/held_items/z/icium_z"
+    },
+    "incinium_z": {
+      "textures": "textures/items/held_items/z/incinium_z"
+    },
+    "kommonium_z": {
+      "textures": "textures/items/held_items/z/kommonium_z"
+    },
+    "lunalium_z": {
+      "textures": "textures/items/held_items/z/lunalium_z"
+    },
+    "lycanium_z": {
+      "textures": "textures/items/held_items/z/lycanium_z"
+    },
+    "marshadium_z": {
+      "textures": "textures/items/held_items/z/marshadium_z"
+    },
+    "mewnium_z": {
+      "textures": "textures/items/held_items/z/mewnium_z"
+    },
+    "mimikium_z": {
+      "textures": "textures/items/held_items/z/mimikium_z"
+    },
+    "normalium_z": {
+      "textures": "textures/items/held_items/z/normalium_z"
+    },
+    "pikanium_z": {
+      "textures": "textures/items/held_items/z/pikanium_z"
+    },
+    "pikashunium_z": {
+      "textures": "textures/items/held_items/z/pikashunium_z"
+    },
+    "poisonium_z": {
+      "textures": "textures/items/held_items/z/poisonium_z"
+    },
+    "primarium_z": {
+      "textures": "textures/items/held_items/z/primarium_z"
+    },
+    "psychium_z": {
+      "textures": "textures/items/held_items/z/psychium_z"
+    },
+    "rockium_z": {
+      "textures": "textures/items/held_items/z/rockium_z"
+    },
+    "snorlium_z": {
+      "textures": "textures/items/held_items/z/snorlium_z"
+    },
+    "solganium_z": {
+      "textures": "textures/items/held_items/z/solganium_z"
+    },
+    "steelium_z": {
+      "textures": "textures/items/held_items/z/steelium_z"
+    },
+    "tapunium_z": {
+      "textures": "textures/items/held_items/z/tapunium_z"
+    },
+    "ultranecrozium_z": {
+      "textures": "textures/items/held_items/z/ultranecrozium_z"
+    },
+    "waterium_z": {
+      "textures": "textures/items/held_items/z/waterium_z"
+    },
+    "dragonite_christmas": {
+      "textures": "textures/sprites/default/dragonite_christmas.png"
+    },
+    "azumarill_christmas": {
+      "textures": "textures/sprites/default/azumarill_christmas.png"
+    },
+    "hydreigon_christmas": {
+      "textures": "textures/sprites/default/hydreigon_christmas.png"
+    },
+    "cinderace_christmas": {
+      "textures": "textures/sprites/default/cinderace_christmas.png"
+    },
+    "golurk_christmas": {
+      "textures": "textures/sprites/default/golurk_christmas.png"
+    },
+    "tyrantrum_christmas": {
+      "textures": "textures/sprites/default/tyrantrum_christmas.png"
+    },
+    "mamoswine_christmas": {
+      "textures": "textures/sprites/default/mamoswine_christmas.png"
+    },
+    "meloetta_christmas": {
+      "textures": "textures/sprites/default/meloetta_christmas.png"
+    },
+    "lucario_christmas": {
+      "textures": "textures/sprites/default/lucario_christmas.png"
+    },
+    "jirachi_christmas": {
+      "textures": "textures/sprites/default/jirachi_christmas.png"
+    },
+    "toxapex_christmas": {
+      "textures": "textures/sprites/default/toxapex_christmas.png"
+    },
+    "rillaboom_christmas": {
+      "textures": "textures/sprites/default/rillaboom_christmas.png"
+    },
+    "maushold_christmas": {
+      "textures": "textures/sprites/default/maushold_christmas.png"
+    },
+    "sableye_sculk": {
+      "textures": "textures/sprites/default/sableye_sculk.png"
+    },
+    "zeraora_mjolnirsoul": {
+      "textures": "textures/sprites/default/zeraora_mjolnirsoul.png"
+    },
+    "victini_christmas": {
+      "textures": "textures/sprites/default/victini_christmas.png"
+    },
+    "yveltal_christmas": {
+      "textures": "textures/sprites/default/yveltal_christmas.png"
+    },
+    "darmanitangalar_christmas": {
+      "textures": "textures/sprites/default/darmanitangalar_christmas.png"
+    },
+    "darmanitangalarzen_christmas": {
+      "textures": "textures/sprites/default/darmanitangalarzen_christmas.png"
+    },
+    "meowscarada_valentine": {
+      "textures": "textures/sprites/default/meowscarada_valentine.png"
+    },
+    "sableyemega_sculk": {
+      "textures": "textures/sprites/default/sableyemega_sculk.png"
+    },
+    "mewtwo_bnw": {
+      "textures": "textures/sprites/default/mewtwo_bnw.png"
+    },
+    "rillaboom_broly": {
+      "textures": "textures/sprites/default/rillaboom_broly.png"
+    },
+    "ironvaliant_ichigo": {
+      "textures": "textures/sprites/default/ironvaliant_ichigo.png"
+    },
+    "floetteeternal_pbranni": {
+      "textures": "textures/sprites/default/floetteeternal_pbranni.png"
+    },
+    "dragapult_pbranni": {
+      "textures": "textures/sprites/default/dragapult_pbranni.png"
+    },
+    "rayquaza_pbranni": {
+      "textures": "textures/sprites/default/rayquaza_pbranni.png"
+    },
+    "garganacl_pbranni": {
+      "textures": "textures/sprites/default/garganacl_pbranni.png"
+    },
+    "gardevoir_pbranni": {
+      "textures": "textures/sprites/default/gardevoir_pbranni.png"
+    },
+    "gardevoirmega_pbranni": {
+      "textures": "textures/sprites/default/gardevoirmega_pbranni.png"
+    },
+    "rayquazamega_pbranni": {
+      "textures": "textures/sprites/default/rayquazamega_pbranni.png"
+    },
+    "keldeo_pbranni": {
+      "textures": "textures/sprites/default/keldeo_pbranni.png"
+    },
+    "anniversary_coin": {
+      "textures": "textures/items/anniversary_event/anniversary_coin"
+    },
+    "shattered_blade": {
+      "textures": "textures/items/anniversary_event/shattered_blade"
+    },
+    "shattered_hilt": {
+      "textures": "textures/items/anniversary_event/shattered_hilt"
+    },
+    "surging_emerald": {
+      "textures": "textures/items/anniversary_event/surging_emerald"
+    },
+    "sword_of_justice": {
+      "textures": "textures/items/anniversary_event/sword_of_justice"
     }
   }
 }

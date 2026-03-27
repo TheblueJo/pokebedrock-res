@@ -10,7 +10,9 @@
 			"textures": {
 				"evo_aura": "textures/entity/evolving",
 				"default": "textures/entity/pokemon/floetteeternal/floetteeternal.png",
-				"shiny_default": "textures/entity/pokemon/floetteeternal/shiny_floetteeternal.png"
+				"shiny_default": "textures/entity/pokemon/floetteeternal/shiny_floetteeternal.png",
+				"pbranni": "textures/entity/pokemon/floetteeternal/floetteeternal_pbranni.png",
+				"shiny_pbranni": "textures/entity/pokemon/floetteeternal/shiny_floetteeternal_pbranni.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -22,7 +24,7 @@
 					"v.skin_index = query.property('pokeb:skin_index');",
 					"v.is_ground_idling = query.is_on_ground && query.modified_move_speed < v.move_threshold;",
 					"v.is_air_idling = !query.is_on_ground && !query.is_in_water && !query.is_jumping && query.modified_move_speed < v.move_threshold;",
-					"v.is_water_idling = query.is_in_water && query.modified_move_speed < v.move_threshold;",
+					"v.is_water_idling = query.is_in_water && !query.is_swimming;",
 					"v.is_walking = query.modified_move_speed >= v.move_threshold && query.is_on_ground && !query.is_in_water;",
 					"v.is_swimming = query.is_swimming;",
 					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
@@ -37,6 +39,7 @@
 				]
 			},
 			"animations": {
+				"default_blink": "animation.floetteeternal.blink",
 				"default_ground_idle": "animation.floetteeternal.ground_idle",
 				"default_air_idle": "animation.floetteeternal.air_idle",
 				"default_water_idle": "animation.floetteeternal.water_idle",
@@ -44,17 +47,28 @@
 				"default_flying": "animation.floetteeternal.flying",
 				"default_swimming": "animation.floetteeternal.swimming",
 				"default_sleeping": "animation.floetteeternal.sleeping",
+				"default_attack": "animation.floetteeternal.attack",
+				"pbranni_flying": "animation.floetteeternal_pbranni.flying",
+				"pbranni_air_idle": "animation.floetteeternal_pbranni.air_idle",
+				"pbranni_swimming": "animation.floetteeternal_pbranni.swimming",
+				"pbranni_water_idle": "animation.floetteeternal_pbranni.water_idle",
+				"pbranni_walking": "animation.floetteeternal_pbranni.walking",
+				"pbranni_ground_idle": "animation.floetteeternal_pbranni.ground_idle",
+				"pbranni_sleeping": "animation.floetteeternal_pbranni.sleeping",
+				"pbranni_blink": "animation.floetteeternal_pbranni.blink",
+				"pbranni_attack": "animation.floetteeternal_pbranni.attack",
+				"pbranni_faint": "animation.floetteeternal_pbranni.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
-				"attack": "animation.floetteeternal.attack",
-				"blink": "animation.floetteeternal.blink",
-				"controller": "controller.animation.pokemon"
+				"attack": "controller.animation.pokemon.floetteeternal_attack",
+				"blink": "controller.animation.pokemon.floetteeternal_blink",
+				"controller": "controller.animation.pokemon.floetteeternal"
 			},
 			"render_controllers": [
 				{
-					"controller.render.pokemon": "query.variant==0"
+					"controller.render.pokemon:floetteeternal": "query.variant==0"
 				},
 				{
-					"controller.render.evolve": "query.variant==1"
+					"controller.render.pokemon:floetteeternal.evolve": "query.variant==1"
 				}
 			],
 			"spawn_egg": {
@@ -62,7 +76,8 @@
 				"texture_index": 0
 			},
 			"geometry": {
-				"default": "geometry.floetteeternal"
+				"default": "geometry.floetteeternal",
+				"pbranni": "geometry.floetteeternal_pbranni"
 			}
 		}
 	}

@@ -11,7 +11,8 @@
 				"evo_aura": "textures/entity/evolving",
 				"default": "textures/entity/pokemon/gardevoir/gardevoir.png",
 				"shiny_default": "textures/entity/pokemon/gardevoir/shiny_gardevoir.png",
-				"christmas": "textures/entity/pokemon/gardevoir/gardevoir_christmas.png"
+				"pbranni": "textures/entity/pokemon/gardevoir/gardevoir_pbranni.png",
+				"shiny_pbranni": "textures/entity/pokemon/gardevoir/shiny_gardevoir_pbranni.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -23,7 +24,7 @@
 					"v.skin_index = query.property('pokeb:skin_index');",
 					"v.is_ground_idling = query.is_on_ground && query.modified_move_speed < v.move_threshold;",
 					"v.is_air_idling = !query.is_on_ground && !query.is_in_water && !query.is_jumping && query.modified_move_speed < v.move_threshold;",
-					"v.is_water_idling = query.is_in_water && query.modified_move_speed < v.move_threshold;",
+					"v.is_water_idling = query.is_in_water && !query.is_swimming;",
 					"v.is_walking = query.modified_move_speed >= v.move_threshold && query.is_on_ground && !query.is_in_water;",
 					"v.is_swimming = query.is_swimming;",
 					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
@@ -47,13 +48,16 @@
 				"default_swimming": "animation.gardevoir.ground_idle",
 				"default_sleeping": "animation.gardevoir.sleeping",
 				"default_attack": "animation.gardevoir.attack",
-				"christmas_ground_idle": "animation.gardevoir_christmas.ground_idle",
-				"christmas_water_idle": "animation.gardevoir_christmas.water_idle",
-				"christmas_walking": "animation.gardevoir_christmas.walking",
-				"christmas_swimming": "animation.gardevoir_christmas.swimming",
-				"christmas_attack": "animation.gardevoir_christmas.attack",
-				"christmas_faint": "animation.gardevoir_christmas.faint",
-				"christmas_sleeping": "animation.gardevoir_christmas.sleeping",
+				"pbranni_flying": "animation.gardevoir_pbranni.flying",
+				"pbranni_air_idle": "animation.gardevoir_pbranni.air_idle",
+				"pbranni_swimming": "animation.gardevoir_pbranni.swimming",
+				"pbranni_water_idle": "animation.gardevoir_pbranni.water_idle",
+				"pbranni_walking": "animation.gardevoir_pbranni.walking",
+				"pbranni_ground_idle": "animation.gardevoir_pbranni.ground_idle",
+				"pbranni_sleeping": "animation.gardevoir_pbranni.sleeping",
+				"pbranni_blink": "animation.gardevoir_pbranni.blink",
+				"pbranni_attack": "animation.gardevoir_pbranni.attack",
+				"pbranni_faint": "animation.gardevoir_pbranni.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"attack": "controller.animation.pokemon.gardevoir_attack",
 				"blink": "controller.animation.pokemon.gardevoir_blink",
@@ -73,7 +77,7 @@
 			},
 			"geometry": {
 				"default": "geometry.gardevoir",
-				"christmas": "geometry.gardevoir_christmas"
+				"pbranni": "geometry.gardevoir_pbranni"
 			}
 		}
 	}

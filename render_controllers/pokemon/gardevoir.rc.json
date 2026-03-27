@@ -11,14 +11,15 @@
 				"geometries": {
 					"Array.geometryVariants": [
 						"Geometry.default",
-						"Geometry.christmas"
+						"Geometry.pbranni"
 					]
 				},
 				"textures": {
 					"Array.textureVariants": [
 						"Texture.default",
 						"Texture.shiny_default",
-						"Texture.christmas"
+						"Texture.pbranni",
+						"Texture.shiny_pbranni"
 					]
 				}
 			},
@@ -29,7 +30,7 @@
 			],
 			"geometry": "Array.geometryVariants[v.skin_index]",
 			"textures": [
-				"Array.textureVariants[(v.skin_index==0 && query.property('pokeb:shiny') == false) ? 0:(v.skin_index==0 && query.property('pokeb:shiny') == true) ? 1:(v.skin_index==1) ? 2:0]"
+				"Array.textureVariants[(v.skin_index==0 && query.property('pokeb:shiny') == false) ? 0:(v.skin_index==0 && query.property('pokeb:shiny') == true) ? 1:(v.skin_index==1 && query.property('pokeb:shiny') == false) ? 2:(v.skin_index==1 && query.property('pokeb:shiny') == true) ? 3:0]"
 			]
 		},
 		"controller.render.pokemon:gardevoir.evolve": {
@@ -37,7 +38,7 @@
 				"geometries": {
 					"Array.geometryVariants": [
 						"Geometry.default",
-						"Geometry.christmas"
+						"Geometry.pbranni"
 					]
 				}
 			},

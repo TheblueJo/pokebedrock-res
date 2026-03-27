@@ -4,25 +4,80 @@
 		"description": {
 			"identifier": "pokemon:keldeo",
 			"materials": {
-				"default": "zombie"
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
 			},
 			"textures": {
-				"default": "textures/sprites/default/keldeo",
-				"shiny_default": "textures/sprites/default/keldeo",
-				"default_male": "textures/sprites/default/keldeo",
-				"default_female": "textures/sprites/default/keldeo",
-				"shiny_male": "textures/sprites/default/keldeo",
-				"shiny_female": "textures/sprites/default/keldeo"
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/keldeo/keldeo.png",
+				"shiny_default": "textures/entity/pokemon/keldeo/shiny_keldeo.png",
+				"pbranni": "textures/entity/pokemon/keldeo/keldeo_pbranni.png",
+				"shiny_pbranni": "textures/entity/pokemon/keldeo/shiny_keldeo_pbranni.png"
 			},
-			"geometry": {
-				"default": "geometry.substitute"
+			"scripts": {
+				"scale": "q.property('pokeb:scale')",
+				"initialize": [
+					"v.blink_chance = 0.01;",
+					"v.move_threshold = 0.01;"
+				],
+				"pre_animation": [
+					"v.skin_index = query.property('pokeb:skin_index');",
+					"v.is_ground_idling = query.is_on_ground && query.modified_move_speed < v.move_threshold;",
+					"v.is_air_idling = !query.is_on_ground && !query.is_in_water && !query.is_jumping && query.modified_move_speed < v.move_threshold;",
+					"v.is_water_idling = query.is_in_water && !query.is_swimming;",
+					"v.is_walking = query.modified_move_speed >= v.move_threshold && query.is_on_ground && !query.is_in_water;",
+					"v.is_swimming = query.is_swimming;",
+					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
+					"v.is_sleeping = q.is_sleeping;",
+					"v.should_blink = math.random(0.0, 1.0) <= v.blink_chance;"
+				],
+				"animate": [
+					"controller",
+					{
+						"blink": "v.should_blink"
+					}
+				]
+			},
+			"animations": {
+				"default_blink": "animation.keldeo.blink",
+				"default_ground_idle": "animation.keldeo.ground_idle",
+				"default_air_idle": "animation.keldeo.ground_idle",
+				"default_water_idle": "animation.keldeo.water_idle",
+				"default_walking": "animation.keldeo.walking",
+				"default_flying": "animation.keldeo.ground_idle",
+				"default_swimming": "animation.keldeo.swimming",
+				"default_sleeping": "animation.keldeo.sleeping",
+				"default_attack": "animation.keldeo.attack",
+				"pbranni_flying": "animation.keldeo_pbranni.flying",
+				"pbranni_air_idle": "animation.keldeo_pbranni.air_idle",
+				"pbranni_swimming": "animation.keldeo_pbranni.swimming",
+				"pbranni_water_idle": "animation.keldeo_pbranni.water_idle",
+				"pbranni_walking": "animation.keldeo_pbranni.walking",
+				"pbranni_ground_idle": "animation.keldeo_pbranni.ground_idle",
+				"pbranni_sleeping": "animation.keldeo_pbranni.sleeping",
+				"pbranni_blink": "animation.keldeo_pbranni.blink",
+				"pbranni_attack": "animation.keldeo_pbranni.attack",
+				"pbranni_faint": "animation.keldeo_pbranni.faint",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"attack": "controller.animation.pokemon.keldeo_attack",
+				"blink": "controller.animation.pokemon.keldeo_blink",
+				"controller": "controller.animation.pokemon.keldeo"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				{
+					"controller.render.pokemon:keldeo": "query.variant==0"
+				},
+				{
+					"controller.render.pokemon:keldeo.evolve": "query.variant==1"
+				}
 			],
 			"spawn_egg": {
 				"texture": "keldeo",
 				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.keldeo",
+				"pbranni": "geometry.keldeo_pbranni"
 			}
 		}
 	}

@@ -1,30 +1,6 @@
-**Update v2.17.0**
+**Update v2.17.1**
 
-- Added Anniversary Event Items
-- Updated Apricorn Trees & Look
-- Greatly improved the build logic of the addon to build files into single files. Which merges animations, animation controllers, render controllers, geometry models, and materials into one combined file per type during the build step. This reduces the archive from ~11,260 to ~9,460 files, improving pack load times.
-- Add compileCombinedAssets pre-pass that runs before archiving
-- Add COMPILE_EXCEPTIONS data module for per-key opt-outs
-- Warn on duplicate keys with differing values (keeps first-seen)
-- Warn on mixed format_version values (uses highest)
-- Sort merged keys/identifiers for deterministic output
-- Add Jest test suite for the compile step
-- New models
-  - Milcery line
-  - Ferroseed Line
-  - Keldeo and KeldeoResolute
-  - Kricketot line
-  - Noibat line
-  - Remodeled Munchlax Line
-- Skins (pbranni = pokebedrock anniversary)
-  - Dragapult pbranni
-  - FloetteEternal pbranni
-  - Gardevoir and GardevoirMega pbranni
-  - Rayquaza and RayquazaMega pbranni
-  - Keldeo pbranni
-  - Garganacl pbranni
-  - Mewtwo BnW
-  - Sableye and SableyeMega sculk
-  - Rillaboom broly
-  - Ironvaliant ichigo
-- Fixed Meowscarada Shiny texture
+- Add translations for `forms.party.setNickName.fail.empty`, `battle.playerActor.usedBagItemOnTarget` and `models.ShowdownInterpreter.pokemonUsedMoveOnTarget`
+- Updated de_DE.lang and en_ES.lang extensively by @TheblueJo
+- Massly update the lang files by AI to ensure things are in sync and fixed a HUGE amount of broken translations.
+- Added a huge amount of translations for missing pokebedrock-beh stuff.

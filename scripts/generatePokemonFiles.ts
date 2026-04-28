@@ -1559,15 +1559,6 @@ async function processPokemon() {
   // Update language file and generate markdown report.
   try {
     const langFilePath = path.join(cwd, "texts", "en_US.lang");
-    const spawnEggEntries = Object.keys(pokemonJson!.pokemon)
-      .map(
-        (s) =>
-          `item.spawn_egg.entity.pokemon:${s}.name=${
-            pokemonJson!.pokemon[s as PokemonTypeId].name
-          }`
-      )
-      .join("\n");
-    editLangSection(langFilePath, "Pokemon Spawn Eggs", spawnEggEntries);
     const dismountEntries = Object.keys(pokemonJson!.pokemon)
       .filter((p) => pokemonJson!.pokemon[p as PokemonTypeId].canMount)
       .map(
